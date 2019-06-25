@@ -7,29 +7,45 @@ export const clearInput = () => elements.searchInput.value = '';
 
 export const showProfile = (user) => {
     const profileTemplate = `
-            <div class="profile__photo">
-                <img src="${user.avatar_url}" alt="">
-                <a href="${user.html_url}" target="_blank" class="btn btn-primary btn-lg btn-block">View Profile</a>
-            </div>
-            <div class="profile__list">
-                <div>
-                    <ul class="list-group">
-                        <li class="list-group-item">Email: ${user.email ? user.login : 'none'}</li>
-                        <li class="list-group-item">Name: ${user.name ? user.name : 'none'}</li>
-                        <li class="list-group-item">Login: ${user.login}</li>
-                        <li class="list-group-item">Company: ${user.email ? user.email: 'none'}</li>
-                        <li class="list-group-item">Location:${user.location ? user.location : 'none'} </li>
-                    </ul>
-                </div>
-            </div>
+    <div class="profile__container">
+        <div class="profile__photo">
+            <img src="${user.avatar_url}" alt="">
+            <a href="${user.html_url}" target="_blank" class="btn btn-primary btn-lg btn-block">View Profile</a>
         </div>
-        <div class="m-5 d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-primary mx-3">Public repo: <span class="badge badge-primary">${user.public_repos}</span></button>
-            <button type="button" class="btn btn-outline-secondary mx-3">Public Gists: <span class="badge badge-secondary">${user.public_gists}</span></button>
-            <button type="button" class="btn btn-outline-warning mx-3">Followers: <span class="badge badge-warning">${user.followers}</span></button>
+        <div class="profile__list">
+            <ul class="notes">
+                <li class="note">
+                    <p>Email</p>
+                    <p>${user.email ? user.login : 'none'}</p>
+                </li>
+                <li class="note">
+                    <p>Name: </p>
+                    <p>${user.name ? user.name : 'none'}</p>
+                </li>
+                <li class="note">
+                    <p>Login: </p>
+                    <p>${user.login}</p>
+                </li>
+                <li class="note">
+                    <p>Company: </p>
+                    <p>${user.email ? user.email: 'none'} </p>
+                </li>
+                <li class="note">
+                    <p>Location:</p>
+                    <p>${user.location ? user.location : 'none'}</p>
+                </li>
+            </ul>
         </div>
-        <div class="mt-3">
-            <div class="repos"></div>
+    </div> 
+
+
+    <div class="m-5 d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-primary mx-3">Public repo: <span class="badge badge-primary">${user.public_repos}</span></button>
+        <button type="button" class="btn btn-outline-secondary mx-3">Public Gists: <span class="badge badge-secondary">${user.public_gists}</span></button>
+        <button type="button" class="btn btn-outline-warning mx-3">Followers: <span class="badge badge-warning">${user.followers}</span></button>
+    </div>
+    <div class="repos"></div>
+
     `;
 
     elements.profile.insertAdjacentHTML('afterbegin', profileTemplate);
@@ -75,3 +91,6 @@ export const clearAlert = (className) => {
         alert.parentElement.removeChild(alert)
     }
 };
+
+
+
